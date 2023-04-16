@@ -6,8 +6,6 @@ const multer = require("multer");
 const { v4: uuidv4 } = require("uuid");
 const session = require("express-session");
 const flash = require("connect-flash");
-const csurf = require("csurf");
-const csrfProtection = csurf;
 
 // routes
 const errorController = require("./controllers/errorController");
@@ -66,8 +64,6 @@ app.use(
 
 app.use(flash());
 
-app.use(csrfProtection());
-
 app.use((request, response, next) => {
   const errors = request.flash("Error");
   const success = request.flash("Success");
@@ -78,7 +74,6 @@ app.use((request, response, next) => {
   response.locals.hasErrorMessages = errors.length > 0;
   response.locals.successMessages = success;
   response.locals.hasSuccessMessages = success.length > 0;
-  response.locals.csrfToken = request.csrfToken();
 
   next();
 });
