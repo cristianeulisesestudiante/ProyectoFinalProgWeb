@@ -1,7 +1,7 @@
 const Usuarios = require("../models/Usuario");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
-const transporter = require("../../../ProyectoFinalProgWeb/services/EmailService");
+const transporter = require("../services/EmailService");
 const { Op } = require("sequelize");
 
 exports.GetLogin = (request, response, next) => {

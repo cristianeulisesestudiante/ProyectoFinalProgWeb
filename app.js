@@ -10,8 +10,8 @@ const csurf = require("csurf");
 const csrfProtection = csurf;
 
 // routes
-const errorController = require("../Programacion Web/ProyectoFinalProgWeb/controllers/errorController");
-const authRouter = require("../Programacion Web/ProyectoFinalProgWeb/routes/auth");
+const errorController = require("./controllers/errorController");
+const authRouter = require("./routes/auth");
 
 const imageStorage = multer.diskStorage({
   destination: (request, file, cb) => {
@@ -24,10 +24,10 @@ const imageStorage = multer.diskStorage({
 });
 
 // conexion bd
-const connection = require("../Programacion Web/ProyectoFinalProgWeb/context/appContext");
+const connection = require("./context/appContext");
 
 // models
-const Usuarios = require("../Programacion Web/ProyectoFinalProgWeb/models/Usuario");
+const Usuarios = require("./models/Usuario");
 
 const app = express();
 
