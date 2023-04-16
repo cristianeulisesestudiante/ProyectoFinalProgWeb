@@ -1,0 +1,152 @@
+<div>
+  <div
+    class="text-center p-3 rounded-4 position-center-crear-user login-color max-width-crear-usuario crear-usuario"
+  >
+    <div class="form-sign m-auto">
+      <form
+        enctype="multipart/form-data"
+        id="crear-usuario-form"
+        action="/crear-usuario"
+        method="post"
+      >
+      <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+        <div class="d-flex gap-2 flex-column mt-3">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control input"
+              id="usuario"
+              placeholder="name@example.com"
+              name="Usuario"
+              value="{{#if hasData}}{{data.Usuario}}{{/if}}"
+            />
+            <label for="floatingInput">Usuario</label>
+            <p class="text-danger fst-italic text-start d-none mb-0">Este campo es
+              requerido</p>
+            {{#if userExist }}
+                <p class="text-danger fst-italic text-start mb-0">Este usuario ya existe</p>
+            {{/if}}
+          </div>
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control input"
+              id="nombre"
+              placeholder="name@example.com"
+              name="Nombre"
+              value="{{#if hasData}}{{data.Nombre}}{{/if}}"
+            />
+            <label for="floatingInput">Nombre</label>
+            <p class="text-danger fst-italic text-start d-none mb-0">Este campo es
+              requerido</p>
+          </div>
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control input"
+              id="apellido"
+              placeholder="name@example.com"
+              name="Apellido"
+              value="{{#if hasData}}{{data.Apellido}}{{/if}}"
+            />
+            <label for="floatingInput">Apellido</label>
+            <p class="text-danger fst-italic text-start d-none mb-0">Este campo es
+              requerido</p>
+          </div>
+          <div class="form-floating">
+            <input
+              type="email"
+              class="form-control input"
+              id="correo"
+              placeholder="name@example.com"
+              name="Correo"
+              value="{{#if hasData}}{{data.Correo}}{{/if}}"
+            />
+            <label for="floatingInput">Correo</label>
+            <p class="text-danger fst-italic text-start d-none mb-0">Este campo es
+              requerido</p>
+          </div>
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control input"
+              id="telefono"
+              placeholder="name@example.com"
+              name="Telefono"
+              value="{{#if hasData}}{{data.Telefono}}{{/if}}"
+            />
+            <label for="floatingInput">Telefono</label>
+            <p class="text-danger fst-italic text-start d-none mb-0">Este campo es
+              requerido</p>
+            <span
+              class="text-danger fst-italic text-start d-none mb-0"
+              id="telefono-invalido"
+            >Telefono invalido</span>
+          </div>
+          <div class="form-floating">
+            <input
+              type="file"
+              class="form-control input"
+              id="foto"
+              placeholder="name@example.com"
+              name="Foto"
+              value="{{#if hasData}}{{data.Foto}}{{/if}}"
+            />
+            <label for="floatingInput">Foto de perfil</label>
+            <p class="text-danger fst-italic text-start d-none mb-0">Este campo es
+              requerido</p>
+          </div>
+          <div class="form-floating">
+            <input
+              type="password"
+              class="form-control input"
+              id="password"
+              placeholder="Password"
+              name="Password"
+              value="{{#if hasData}}{{data.Password}}{{/if}}"
+            />
+            <label for="floatingPassword">Contraseña</label>
+            <p class="text-danger fst-italic text-start d-none mb-0">Este campo es
+              requerido</p>
+            <span
+              class="text-danger fst-italic text-start d-none non-equal-password mb-0"
+            >las contraseñas no son iguales</span>
+          </div>
+          <div class="form-floating">
+            <input
+              type="password"
+              class="form-control input"
+              id="confirm-password"
+              placeholder="Password"
+              name="ConfirmPassword"
+              value="{{#if hasData}}{{data.ConfirmPassword}}{{/if}}"
+            />
+            <label for="floatingPassword">Confirmar contraseña</label>
+            <p class="text-danger fst-italic text-start d-none mb-0">Este campo es
+              requerido</p>
+            <span
+              class="text-danger fst-italic text-start d-none non-equal-password mb-0"
+            >las contraseñas no son iguales</span>
+          </div>
+        </div>
+
+        <div class="d-flex flex-column gap-2">
+          <button
+            class="w-100 btn btn-lg btn-crear-usuario text-light mt-2 "
+            type="submit"
+            id="btn-crear-usuario"
+          >Crear nuevo Usuario</button>
+
+          <div class="mt-0">
+            <a
+              class="w-100 btn btn-lg bg-warning text-light mb-0"
+              href="/"
+              id="btn-volver-atras"
+            >Volver Atras</a>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

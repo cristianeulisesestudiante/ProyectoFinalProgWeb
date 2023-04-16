@@ -1,0 +1,65 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{pageTitle}}</title>
+    <link
+      rel="stylesheet"
+      href="../../assets/css/lib/boostrap/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <script src="../../assets/js/lib/Jquery/jquery-3.6.3.min.js" defer></script>
+    <script src="../../assets/js/lib/boostrap/bootstrap.min.js" defer></script>
+    <script src="../../assets/js/validarLogin.js" defer></script>
+    <script src="../../assets/js/validarCrearUsuario.js" defer></script>
+    <script src="../../assets/js/validarResetearPassword.js" defer></script>
+    <script src="../../assets/js/validarActualizarPassword.js" defer></script>
+  </head>
+  <body>
+    <header></header>
+    <main>
+
+      {{#if hasErrorMessages}}
+        <div
+          class="alert alert-danger alert-dismissible fade show position-alert"
+          role="alert"
+        >
+          <ul>
+            {{#each errorMessages}}
+              <li><strong>{{this}}</strong></li>
+            {{/each}}
+          </ul>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+      {{/if}}
+
+      {{#if hasSuccessMessages}}
+        <div
+          class="alert alert-success alert-dismissible fade show position-alert"
+          role="alert"
+        >
+          <ul class="mb-0">
+            {{#each successMessages}}
+              <li><strong>{{this}}</strong></li>
+            {{/each}}
+          </ul>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+      {{/if}}
+
+      {{{body}}}
+    </main>
+    <footer></footer>
+  </body>
+</html>
