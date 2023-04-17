@@ -14,8 +14,9 @@ exports.GetPost = async (req, res, next) => {
    //    { description: "this is a description of the post", imagePath: "images/6.jpg", comments: [{name: 'user1', comment: 'description'}, {name: 'user2', comment: 'description'}] },
    //    { description: "this is a description of the post", imagePath: "images/7.jpg", comments: [{name: 'user1', comment: 'description'}, {name: 'user2', comment: 'description'}] },
    // ];
+   const id = 1;
    try {
-      let result = await Post.findAll();
+      let result = await Post.findAll({ where: { usuarioId: id } });
       let posts = result.map((result) => result.dataValues);
       posts = posts.reverse();
       result = await Comentarios.findAll();

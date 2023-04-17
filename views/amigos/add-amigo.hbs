@@ -1,0 +1,89 @@
+<main>
+      <div class="p-5 col-md-6">
+         <form class="d-flex" role="search" action="/search-amigo" method="post">
+               <input
+               class="form-control me-2"
+               type="search"
+               placeholder="Insert Book Name"
+               aria-label="Search"
+               id="search"
+               name="Search"
+               {{#if searchMode}}value="{{nameSearch}}"{{/if}}
+         /><button class="btn btn-outline-success fs-5" type="submit">Search</button>
+         </form>    
+   {{#if searchMode}}
+   <div class="album py-5 bg-light">
+         <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {{#each usuarios as |usuario|}}
+               <div class="col ">
+                  <div class="card shadow-sm ">
+                     {{!-- <a href="/book-details/{{book.id}}?details=true" class="stretched-link"> --}}
+                     {{!-- <img src="{{book.imagePath}}" alt="{{book.title}}" class="bd-placeholder-img card-img-top"  height="325" > --}}
+                     {{!-- </a> --}}
+                     <div class="card-body bg-dark-subtle">
+                     <h4 class="text-center">{{usuario.nombre}}ss</h4>
+
+                     {{!-- <div class="my-3">
+                     <h6 class="text-center m-0 color-subtitle">CATEGORY</h6>
+                     <p class="card-text text-center">{{book.category.dataValues.name}}</p>
+                     </div> --}}
+                     <div class="my-3">
+                     <h6 class="text-center m-0 color-subtitle">CATEGORY</h6>
+                     <p class="card-text text-center">{{book.category.dataValues.name}}</p>
+                     </div>
+                     </div>
+                    <form
+                        action="/add-amigo"
+                        method="post"
+                        name="form-add-amigo"
+                    >
+                        <input type="hidden" name="UsuarioId" value="{{usuario.id}}" />
+                        <button
+                            name="btn-add-amigo"
+                            type="submit"
+                        >añadir amigo</button>
+                    </form>                     
+                  </div>
+               </div>
+            {{/each}}
+            </div>
+         </div>
+      </div>
+   {{/if}}         
+   {{!-- <div class="album py-5 bg-light ">
+      <div class="container ">
+           <div class="row  row-cols-md-2 ">
+            <div class="container d-flex justify-content-center">
+               <div class="card col-md-7">
+                  <div class="card-header bg-dark text-white">
+                     <label>{{#if editMode}}EDITAR{{else}}CREAR{{/if}} PUBLICACIÓN</label>
+                  </div>
+                  <div class="card-body">
+                     <form name="form-save-post" enctype="multipart/form-data" action="{{#if editMode}}/edit-post{{else}}/create-post{{/if}}" method="post">
+                        <div class="mb-3">
+                           <label for="description" class="form-label">Descripción</label>
+                           <input {{#if editMode}}value="{{post.description}}"{{/if}} type="text" class="form-control" id="description" name="Description" required/>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="post-image" class="form-label">Select an Image</label>
+                            <input type="file" class="form-control" id="post-image" name="Image" {{#if editMode}}{{else}}required{{/if}}/>
+                        </div>
+                        {{#if editMode}}                        
+                        <img src="{{post.imagePath}}" alt="" width="150" class="mb-4">
+                        {{/if}}                        
+
+                        {{#if editMode}}<input type="hidden" name="PostId" value="{{post.id}}">{{/if}}
+                        <div>
+                           <button name="btn-save-{{#if editMode}}edit{{else}}create{{/if}}" type="submit" class="btn btn-primary">{{#if editMode}}Edit{{else}}Create{{/if}}</button>
+                           <a href="/" class="btn btn-warning">Go Back</a>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div> --}}
+</main>

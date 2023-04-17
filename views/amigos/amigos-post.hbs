@@ -2,14 +2,37 @@
    <section class="text-center container">
       <div class="row py-lg-5">
          <div class="col-lg-7 col-md-8 mx-auto">
-            <h1 class="fw-light">PUBLICACIONES</h1>
-            <p class="lead text-muted d-inline">Bienvenido a la zona del home.</p>
+            <h1 class="fw-light">AMIGOS</h1>
+            <p class="lead text-muted d-inline">Bienvenido a la zona de amigos.</p>
             <p class="pt-4">
-               <a href="/create-post" class="btn btn-primary">AÑADIR UN POST</a>
+               <a href="/add-amigo" class="btn btn-primary">AÑADIR UN AMIGO</a>
             </p>
          </div>
       </div>
    </section>
+{{#each usuarios as |usuario|}}
+<div class="bg-primary-subtle">
+    <p>NOMBRE {{usuario.nombre}}</p>
+    <p>APELLIDO {{usuario.apellido}}</p>
+    <p class="bg-secondary">NOMBRE DE USUARIO {{usuario.nombre_user}}</p>
+    <div class="d-flex justify-content-between mx-3 mt-4">
+        <form
+            action="/delete-amigo"
+            method="post"
+            name="form-delete-amigo"
+        >
+        <p>{{usuario.id}}</p>
+            <input type="hidden" name="AmigoId" value="{{usuario.id}}" />
+            <button
+                name="btn-delete-amigo"
+                type="submit"
+                class="btn btn-danger fs-6 px-3"
+            >Delete</button>
+        </form>
+    </div>    
+</div>   
+<br>
+{{/each}}
    <div class="album py-5 bg-light">
       <div class="container">
          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3 b">
@@ -45,9 +68,9 @@
                            {{/each}}
                             </div>
                            </div>
-                           <form action="/reply-comment" method="post">
+                           <form action="/reply-comment-friend" method="post">
                            <div id="div-comment-{{comment.id}}">
-                           <div class="btn btn-primary" name="Botones" id="btn-reply-{{comment.id}}" onclick="reply({{comment.id}},'/')">reply</div>
+                           <div class="btn btn-primary" name="Botones" id="btn-reply-{{comment.id}}" onclick="reply({{comment.id}},'/amigos')">reply</div>
                            </div>
                            <input type="text" value="{{comment.id}}"  name="ComentarioId" hidden>
                            <input type="text" value="{{post.id}}"  name="PostId" hidden>
@@ -56,13 +79,13 @@
                            {{/each}}                          
                         </div>      
                         <div class="my-1">
-                           <form action="/comment-your-post" method="post">
+                           <form action="/new-comment" method="post">
                            <input type="text" name="YourPostComment">
                            <button type="submit" >añadir un comentario</button>
                            <input type="hidden" name="PostId" value="{{post.id}}">
                            </form>                                              
                            </div>
-                        <div class="d-flex justify-content-between mx-3 mt-4">
+                        {{!-- <div class="d-flex justify-content-between mx-3 mt-4">
                            <div>
                               <a
                                  href="/edit-post/{{post.id}}?edit=true"
@@ -81,7 +104,7 @@
                                  class="btn btn-danger fs-6 px-3"
                               >Delete</button>
                            </form>
-                        </div>
+                        </div> --}}
                      </div>
                   </div>
                </div>

@@ -1,17 +1,17 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../context/cristContext");
 
-const Amigos = sequelize.define("amigos", {
+const Notificaciones = sequelize.define("notificaciones", {
    id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       allowNull: false,
       primaryKey: true,
    },
-   usuarioAmigoId: {
+   usuarioSolicitadoId: {
       type: Sequelize.INTEGER,
       allowNull: false,
    },
 });
 
-module.exports = Amigos;
+module.exports = Notificaciones;

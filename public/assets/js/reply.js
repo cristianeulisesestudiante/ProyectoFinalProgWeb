@@ -9,7 +9,7 @@
 //    });
 // });
 
-function reply(id) {
+function reply(id,route) {
    //    btn[index].setAttribute('name', `btn-${index}`)
    //    inputComment.setAttribute("name", `input-${index}`);
    const inputComment = document.createElement("input");
@@ -19,7 +19,7 @@ function reply(id) {
    const botones = document.getElementsByName("Botones");
    botones.forEach(element => element.setAttribute('class', 'btn btn-primary disabled'))
    btnDiscard.setAttribute('class', 'btn btn-primary')
-   btnDiscard.setAttribute('href', '/')
+   btnDiscard.setAttribute('href', route)
    inputComment.setAttribute("id", `input-comment-${id}`);
    inputComment.setAttribute("name", `Comentario`);
    btnSave.setAttribute('type', 'submit');

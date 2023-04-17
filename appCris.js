@@ -12,9 +12,13 @@ const app = express();
 const Posts = require("./models/Posts");
 const Comentarios = require("./models/Comentarios");
 const Respuestas = require("./models/Respuestas");
+const Usuarios = require("./models/Usuariossss");
+const Amigos = require('./models/Amigos')
+const Notificaciones = require('./models/Notificaciones')
 //routes
 const errorController = require("./controllers/ErrorController");
 const homeRouter = require("./routes/home");
+const amigosRouter = require("./routes/amigos");
 
 //other
 const imageStorage = multer.diskStorage({
@@ -45,16 +49,24 @@ app.use("/images", express.static(path.join(__dirname, "images")));
 app.use(multer({ storage: imageStorage }).single("Image"));
 //views
 app.use(homeRouter);
+app.use(amigosRouter);
 app.use(errorController.GetNotFound);
 
 Posts.belongsTo(Comentarios, { constraint: true, onDelete: "CASCADE" });
 Posts.belongsTo(Respuestas, { constraint: true, onDelete: "CASCADE" });
+Posts.belongsTo(Usuarios, { constraint: true, onDelete: "CASCADE" });
 Comentarios.belongsTo(Respuestas, { constraint: true, onDelete: "CASCADE" });
 Comentarios.belongsTo(Posts, { constraint: true, onDelete: "CASCADE" });
 Respuestas.belongsTo(Comentarios, { constraint: true, onDelete: "CASCADE" });
 Respuestas.belongsTo(Posts, { constraint: true, onDelete: "CASCADE" });
+Amigos.belongsTo(Usuarios, { constraint: true, onDelete: "CASCADE" })
+Notificaciones.belongsTo(Usuarios, { constraint: true, onDelete: "CASCADE" })
+// Usuarios.belongsTo(Amigos, { constraint: true, onDelete: "CASCADE" })
 Posts.hasMany(Comentarios);
+Usuarios.hasMany(Amigos)
 Comentarios.hasMany(Respuestas);
+Usuarios.hasMany(Posts);
+
 sequelize
    .sync({})
    .then((result) => {
