@@ -1,0 +1,93 @@
+<main>
+   <section class="text-center container">
+      <div class="row py-lg-5">
+         <div class="col-lg-7 col-md-8 mx-auto">
+            <h1 class="fw-light">PUBLICACIONES</h1>
+            <p class="lead text-muted d-inline">Bienvenido a la zona del home.</p>
+            <p class="pt-4">
+               <a href="/create-post" class="btn btn-primary">AÑADIR UN POST</a>
+            </p>
+         </div>
+      </div>
+   </section>
+   <div class="album py-5 bg-light">
+      <div class="container">
+         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3 b">
+            {{#each posts as |post|}}
+               <div class="col">
+                  <div class="card shadow-sm">
+                     <div class="card-header bg-dark">
+                        <h6 class="text-center text-white">{{post.createdAt}}</h6>
+                     </div>
+                     <div class="card-header bg-dark">
+                        <h6 class="text-center text-white">{{post.description}}</h6>
+                     </div>
+                     <div class="card-body bg-dark-subtle">
+                        <img
+                           src="{{post.imagePath}}"
+                           alt="{{post.description}}"
+                           class="bd-placeholder-img card-img border-none"
+                           height="350"
+                        />
+                        <div class="my-1">
+                           <h6 class="text-center m-0 color-subtitle">COMMENTS</h6>
+                           {{#each ../comments as |comment|}}
+                           {{#if (userComment post.id comment.postId )}}
+                           <div>
+                           <h1>{{post.id}}</h1>
+                            <span> user 1:::: </span>
+                            <div>
+                            <span>{{comment.description}}</span>
+                           {{#each ../../respuestas as |respuesta|}}
+                           {{#if (userComment comment.id respuesta.comentarioId )}}
+                            <p>{{respuesta.description}}</p>
+                           {{/if}}
+                           {{/each}}
+                            </div>
+                           </div>
+                           <form action="/reply-comment" method="post">
+                           <div id="div-comment-{{comment.id}}">
+                           <div class="btn btn-primary" name="Botones" id="btn-reply-{{comment.id}}" onclick="reply({{comment.id}})">reply</div>
+                           </div>
+                           <input type="text" value="{{comment.id}}"  name="ComentarioId" hidden>
+                           <input type="text" value="{{post.id}}"  name="PostId" hidden>
+                           </form>                           
+                           {{/if}}
+                           {{/each}}                          
+                        </div>      
+                        <div class="my-1">
+                           <form action="/comment-your-post" method="post">
+                           <input type="text" name="YourPostComment">
+                           <button type="submit" >añadir un comentario</button>
+                           <input type="hidden" name="PostId" value="{{post.id}}">
+                           </form>                                              
+                           </div>
+                        <div class="d-flex justify-content-between mx-3 mt-4">
+                           <div>
+                              <a
+                                 href="/edit-post/{{post.id}}?edit=true"
+                                 class="btn btn-secondary fs-6 px-4"
+                              >Edit</a>
+                           </div>
+                           <form
+                              action="/delete-post"
+                              method="post"
+                              name="form-delete-post"
+                           >
+                              <input type="hidden" name="PostId" value="{{post.id}}" />
+                              <button
+                                 name="btn-delete-post"
+                                 type="submit"
+                                 class="btn btn-danger fs-6 px-3"
+                              >Delete</button>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            {{/each}}
+         </div>
+      </div>
+   </div>
+   <img src="{{imagePath}}" alt="{{imagePath}}" />
+</main>

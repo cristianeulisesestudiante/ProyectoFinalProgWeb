@@ -1,0 +1,45 @@
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="/assets/css/lib/bootstrap/bootstrap.min.css" />
+      <link rel="stylesheet" href="/assets/css/style.css" />
+
+      <title>{{pageTitle}}</title>
+   </head>
+  <header>
+         <nav class="navbar-expand-lg navbar navbar-dark bg-dark px-3">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <a class="navbar-brand active" href="/">Home</a>
+                <button class="navbar-toggler {{#if activeHome}}active{{/if}}" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+               <ul class="navbar-nav">
+                  <li class="nav-item active">
+                     <a class="nav-link {{#if activeBook}}active{{/if}}" href="/books">Amigos</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link {{#if activeCategory}}active{{/if}}" href="/categories">Centro De Notificaciones</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link {{#if activeAuthor}}active{{/if}}" href="/authors">Eventos</a>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+      </header>
+      <main>
+         {{{body}}}
+      </main>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+               integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+               crossorigin="anonymous">
+      </script>       
+      <script src="/assets/js/reply.js"> </script>
+      {{#if activeBook}} <script src="/assets/js/index/books.js"> </script>{{/if}}
+      {{#if activeCategory}} <script src="/assets/js/index/category.js"> </script>{{/if}}
+      {{#if activeEditorial}} <script src="/assets/js/index/editorial.js"> </script>{{/if}}
+      {{#if activeAuthor}} <script src="/assets/js/index/author.js"> </script>{{/if}}
+
+</html>

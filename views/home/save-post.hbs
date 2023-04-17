@@ -1,0 +1,54 @@
+{{!-- {{#if createAvailable}} --}}
+<main>
+   <div class="album py-5 bg-light ">
+      <div class="container ">
+           <div class="row  row-cols-md-2 ">
+            <div class="container d-flex justify-content-center">
+               <div class="card col-md-7">
+                  <div class="card-header bg-dark text-white">
+                     <label>{{#if editMode}}EDITAR{{else}}CREAR{{/if}} PUBLICACIÓN</label>
+                  </div>
+                  <div class="card-body">
+                     <form name="form-save-post" enctype="multipart/form-data" action="{{#if editMode}}/edit-post{{else}}/create-post{{/if}}" method="post">
+                        <div class="mb-3">
+                           <label for="description" class="form-label">Descripción</label>
+                           <input {{#if editMode}}value="{{post.description}}"{{/if}} type="text" class="form-control" id="description" name="Description" required/>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="post-image" class="form-label">Select an Image</label>
+                            <input type="file" class="form-control" id="post-image" name="Image" {{#if editMode}}{{else}}required{{/if}}/>
+                        </div>
+                        {{#if editMode}}                        
+                        <img src="{{post.imagePath}}" alt="" width="150" class="mb-4">
+                        {{/if}}                        
+
+                        {{#if editMode}}<input type="hidden" name="PostId" value="{{post.id}}">{{/if}}
+                        <div>
+                           <button name="btn-save-{{#if editMode}}edit{{else}}create{{/if}}" type="submit" class="btn btn-primary">{{#if editMode}}Edit{{else}}Create{{/if}}</button>
+                           <a href="/" class="btn btn-warning">Go Back</a>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</main>
+{{!-- {{else}}
+<main>
+   <div class="d-flex align-items-center justify-content-center vh-100">
+      <div class="text-center">
+         <h1 class="display-1 fw-bold">YOU CAN'T CREATE BOOKS</h1>
+         <p class="fs-3"> <span class="text-danger">Opps!</span> You're trying to create a book.</p>
+         <p class="lead">
+            You can't create a book because you haven't create a category or an author or an editorial.
+            <br>
+            You have to create a category, an author and an editorial first to create a book.
+         </p>
+         <a href="/books" class="btn btn-primary fs-3">Back</a>
+      </div>
+   </div>
+</main>
+{{/if}} --}}
