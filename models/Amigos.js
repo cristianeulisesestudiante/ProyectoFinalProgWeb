@@ -12,6 +12,10 @@ const Amigos = sequelize.define("amigos", {
       type: Sequelize.INTEGER,
       allowNull: false,
    },
+   id_usuario: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+   },
 });
 
 module.exports = Amigos;

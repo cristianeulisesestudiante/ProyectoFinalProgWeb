@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const Post = require("../models/Posts");
 const Comentarios = require("../models/Comentarios");
 const Respuestas = require("../models/Respuestas");
@@ -6,7 +7,7 @@ const Usuarios = require("../models/Usuariossss");
 const Notificaciones = require("../models/Notificaciones");
 
 exports.GetAmigosPost = async (req, res, next) => {
-const set = new Set();
+   const set = new Set();
    let amigosIds = [];
    const id = 1;
 
@@ -14,12 +15,16 @@ const set = new Set();
       let result = await Amigos.findAll();
       let amigos = result.map((result) => result.dataValues);
       amigos.forEach((element) => {
-         if (element.usuarioId === id && element.usuarioAmigoId !== id) {
+         console.log(element.id_usuario);
+         console.log(element.usuarioAmigoId );
+         if (element.id_usuario === id && element.usuarioAmigoId !== id) {
             set.add(element.usuarioAmigoId);
-         } else if (element.usuarioAmigoId === id && element.usuarioId !== id) {
+         } else if (element.usuarioAmigoId === id && element.id_usuario !== id) {
             set.add(element.usuarioId);
+
          }
       });
+
       amigosIds = [...set];
       console.log(amigosIds);
       result = await Post.findAll({ where: { usuarioId: amigosIds } });
@@ -104,30 +109,34 @@ exports.PostSearchAmigo = async (req, res, next) => {
       return res.redirect("/");
    }
 
-   const result = await Usuarios.findAll({ where: { nombre_user: username } });
-   const usuarios =  result.map((result) => result.dataValues);;
+   const result = await Usuarios.findAll({ where: { nombre_user: username, id: { [Op.ne]: 1 } } });
+   const usuarios = result.map((result) => result.dataValues);
+
    res.render("amigos/add-amigo", {
       pageTitle: "Search Pokemon",
       searchMode: true,
       nameSearch: username,
-      usuarios: usuarios
+      usuarios: usuarios,
    });
 };
 
 exports.PostAddAmigo = async (req, res, next) => {
-    const amigoAgregar = req.body.UsuarioId;
-    // console.log(image.path);
-    console.log(amigoAgregar);
-    // console.log(description);
- 
-    try {
-       const amigo = await Notificaciones.create({usuarioSolicitadoId: amigoAgregar, usuarioId: 1})
-    //    const result = await Post.create({ description: description, imagePath: "/" + image.path });
-       res.redirect("/");
-    } catch (error) {
-       console.log(error);
-    }
- };
+   const amigoAgregar = req.body.UsuarioId;
+   // console.log(image.path);
+   console.log(amigoAgregar);
+   // console.log(description);
+
+   try {
+      const amigo = await Notificaciones.create({
+         usuarioSolicitadoId: amigoAgregar,
+         usuarioId: 1,
+      });
+      //    const result = await Post.create({ description: description, imagePath: "/" + image.path });
+      res.redirect("/");
+   } catch (error) {
+      console.log(error);
+   }
+};
 
 exports.PostDeleteAmigo = async (req, res, next) => {
    const id = req.body.AmigoId;
