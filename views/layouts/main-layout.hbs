@@ -1,0 +1,88 @@
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="/assets/css/lib/bootstrap/bootstrap.min.css" />
+      <link rel="stylesheet" href="/assets/css/styles-layout.css" />
+      <link rel="stylesheet" href="/assets/css/styles-post.css" />
+      <link rel="stylesheet" href="/assets/css/styles-amigos.css" />
+      <link rel="stylesheet" href="/assets/css/styles-form.css" />
+      <link rel="stylesheet" href="/assets/css/style-auth.css" />
+      <link rel="stylesheet" href="/assets/css/notificaciones.css" />
+      <link rel="stylesheet" href="/assets/css/styles-general.css" />
+      <link rel="stylesheet" href="../../assets/css/eventos.css" />
+      <title>{{pageTitle}}</title>
+   </head>
+   <body>
+      {{#if isAuthenticated}}
+         <header class="nav-bar-layout">
+            <a href="/"><img
+                  class="logo"
+                  src="../../images/assets/logo-red-social.png"
+                  alt="logo"
+               /></a>
+            <nav>
+               <ul class="nav__links">
+                  <li><a class="{{#if homeActive}} active {{/if}}" href="/home">Inicio</a></li>
+                  <li><a class="{{#if amigosActive}} active {{/if}}" href="/amigos">Amigos</a></li>
+                  <li><a class="{{#if notificacionesActive}} active {{/if}}" href="/notificaciones">Notificaciones
+                        <span
+                           class="bg-danger text-light p-1 rounded-2"
+                        >{{notificacionesNumber}}</span>
+                     </a></li>
+                  <li><a class="{{#if eventosActive}} active {{/if}}" href="/eventos">Eventos</a></li>
+               </ul>
+            </nav>
+            <form action="/cerrar-session" method="post">
+               <button type="submit" class="btn btn-danger text-dark me-3">Cerrar sesion</button>
+            </form>
+         </header>
+      {{/if}}
+      <main>
+         {{#if hasErrorMessages}}
+            <div class="alert alert-danger alert-dismissible fade show position-alert" role="alert">
+               <ul>
+                  {{#each errorMessages}}
+                     <li><strong>{{this}}</strong></li>
+                  {{/each}}
+               </ul>
+               <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"
+               ></button>
+            </div>
+         {{/if}}
+
+         {{#if hasSuccessMessages}}
+            <div
+               class="alert alert-success alert-dismissible fade show position-alert"
+               role="alert"
+            >
+               <ul class="mb-0">
+                  {{#each successMessages}}
+                     <li><strong>{{this}}</strong></li>
+                  {{/each}}
+               </ul>
+               <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"
+               ></button>
+            </div>
+         {{/if}}
+         {{{body}}}
+      </main>
+   </body>
+   <script src="../../assets/js/lib/Jquery/jquery-3.6.3.min.js"></script>
+   <script src="../../assets/js/lib/boostrap/bootstrap.bundle.min.js"></script>
+   <script src="../../assets/js/auth/validarLogin.js"></script>
+   <script src="../../assets/js/auth/validarCrearUsuario.js"></script>
+   <script src="../../assets/js/auth/validarActualizarPassword.js"></script>
+   <script src="../../assets/js/auth/validarResetearPassword.js"></script>
+   <script src="../../assets/js/reply.js"> </script>
+   <script src="../../assets/js/post.js"> </script>
+</html>

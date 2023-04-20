@@ -1,0 +1,79 @@
+/* colors
+ #ED1C5B; light 
+ #E20E4E; dark
+*/
+
+/* reset */
+/* *{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body{
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} */
+
+/* Sidebar start here  */
+.sidebar {
+   margin-top: 5px;
+   float: right;
+   width: 300px;
+   height: 85%;
+   z-index: 1;
+   overflow: scroll;
+}
+
+.sidebar h2 {
+   text-align: center;
+   font-size: 20px;
+   text-transform: uppercase;
+   color: #ffffff;
+   padding: 20px;
+   font-weight: bold;
+}
+
+.sidebar ul li {
+   float: left;
+   width: 100%;
+   display: block;
+}
+.sidebar ul li span {
+   color: #ffffff;
+   padding: 0 30px;
+   transition: 0.2s ease-in-out;
+   cursor: pointer;
+}
+.sidebar ul li span:hover {
+   color: #0088a9;
+   transition: 0.2s;
+}
+
+.main {
+   margin-top: 20px;
+   padding: 5px;
+   overflow: scroll;
+   height: 85%;
+   margin-left: 90px;
+}
+
+.main h2 {
+   margin-top: 20px;
+}
+
+.username-amigo {
+   margin-left: 30px;
+}
+
+.form-delete-amigo {
+   margin-left: 25px;
+}
+
+.search-input {
+    width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    
+}

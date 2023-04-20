@@ -1,0 +1,30 @@
+.div-image {
+   max-width: 100px;
+   max-height: 100px;
+   overflow: hidden;
+   margin: 10px 0;
+}
+
+.img-user-notification {
+   border-radius: 100%;
+   float: left;
+   display: flex;
+   width: 100px; 
+   height: 100px; 
+   object-fit: cover;
+   object-position: 50%; 
+
+   
+}
+
+.content-notification {
+    background-color: #3b3d45;
+    padding: 10px 0 0 10px;
+    width: 30%;
+    margin: 10px;
+    float: left;
+}
+
+.title-notification {
+    margin-left: 20px;
+}

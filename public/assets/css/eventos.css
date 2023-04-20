@@ -1,0 +1,57 @@
+.active-nav-event{
+    border: 1px solid #fff !important;
+}
+
+.event{
+    float: left ;
+    width: 450px;
+    margin: 0  0 50px 30px;
+    text-align: center;
+}
+
+.btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btns a{
+    padding: 10px;
+    text-align: center;
+    margin-left: 25px;
+    margin-bottom: 4px;
+}
+.btns form button{
+    position: relative;
+    left: 20px;
+    bottom: -1px;
+    padding: 10px;
+    text-align: center;
+} 
+
+.img-user-search{
+    overflow: hidden;
+    object-fit: cover;
+    object-position: 50%; 
+    border-radius: 100%;
+    float: left;
+    margin-right: 10px;
+    max-width: 150px;
+    max-height: 150px;
+    min-height: 150px;
+    min-width: 150px;
+}
+
+.btn-add-amigo-event{
+    margin-left: 40px ;
+}
+
+.content-invitaciones {
+    background-color: #3b3d45;
+    padding: 10px 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 450px;
+    margin-left: 25px
+}

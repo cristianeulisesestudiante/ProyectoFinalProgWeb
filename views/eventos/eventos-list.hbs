@@ -1,0 +1,70 @@
+<main>
+   <section>
+      <div class="container">
+         <ul class="nav nav-tabs">
+            <li class="nav-item">
+               <a class="nav-link" href="/invitaciones-eventos">Invitaciones de eventos</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link active-nav-event" style="" href="/eventos-list">Mis eventos</a>
+            </li>
+            <a href="/add-eventos">
+            </a>
+         </ul>
+      </div>
+   </section>
+
+   <section class="text-center text-color-main">
+      <div class="row py-lg-5">
+         <div class="col-lg-7 col-md-8 mx-auto">
+            <h1 class="fw-light">Zona de Eventos <b>{{usuario.nombre}} {{usuario.apellido}}</b></h1>
+            <p class="pt-4">
+               <a href="/add-eventos" class="btn btn-primary btn-general-color">Crear Evento</a>
+            </p>
+         </div>
+      </div>
+   </section>
+
+   <div class="row mt-">
+      {{#if hasEventos}}
+         {{#each events}}
+            <div class="event">
+               <div class="card bg-main">
+                  <div class="card-body">
+                     <h5 class="card-title">{{this.name}}</h5>
+                     <p class="card-text">Creado: {{dateTime this.fechaCreacion}}</p>
+                     <p class="card-text">Finaliza: {{dateTime this.fechaFinalizacion}}</p>
+                     <p class="card-text">{{this.lugar}}</p>
+                     <p class="card-text">Capacidad: {{this.cantidad}}</p>
+                     <div class="btns">
+                        <a href="/search/{{this.id}}?invitar=true" class="btn btn-outline-primary">Agregar
+                           amigos</a>
+                        <form
+                           id="form-delete-evento"
+                           action="/delete-eventos"
+                           method="post"
+                           class="form-inline"
+                        >
+                           <button
+                              type="submit"
+                              class="btn btn-outline-danger my-2 me-5 mt-3 ms-2 btn-delete"
+                              id="delete-evento"
+                           >Eliminar</button>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         {{/each}}
+      {{else}}
+         <div class="d-flex align-items-center justify-content-center">
+            <div class="text-center">
+               <h1 class="display-1 fw-bold">No Hay Eventos</h1>
+               <p class="fs-3">
+                  <span class="text-danger">Opps!</span>
+                  Al parecer no tienes ningun evento creado.</p>
+            </div>
+         </div>
+      {{/if}}
+   </div>
+</main>

@@ -1,0 +1,29 @@
+<div>
+  <div
+    class="text-center p-3 rounded-4 position-center login-color max-width-login login"
+  >
+    <div class="form-sign m-auto">
+      <form
+        id="actualizar-password-form"
+        action="/activar-usuario"
+        method="post"
+      >
+        <input type="hidden" name="UsuarioId" value={{usuarioId}} />
+
+        <button
+          class="w-100 btn btn-lg btn-primary text-light mt-2"
+          type="submit"
+          id="btn-activar-usuario"
+        >Activar usuario</button>
+
+        <div class="mt-2">
+          <a
+            class="w-100 btn btn-lg btn-warning text-light"
+            href="/"
+            id="btn-volver-atras"
+          >Volver al login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

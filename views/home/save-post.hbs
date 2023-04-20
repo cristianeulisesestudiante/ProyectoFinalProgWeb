@@ -1,0 +1,32 @@
+<main>
+   <div class="center-elements">
+      <div class="box">
+         <div class="container-form">
+            <div class="top-header">
+               <h3 class="form-title">{{#if editMode}}EDITAR{{else}}CREAR{{/if}} PUBLICACIÓN</h3>
+            </div>
+            <form name="form-save-post" enctype="multipart/form-data" action="{{#if editMode}}/edit-post{{else}}/create-post{{/if}}" method="post">
+            <div class="input-field">
+               <textarea  id="description" name="Description" class="input textarea" cols="20" rows="5">{{#if editMode}}{{post.description}}{{/if}}</textarea>
+            </div>
+            <div class="input-field">
+               <i class="icon"><ion-icon name="images-outline"></ion-icon></i>
+               <input type="file" class="input" id="post-image" name="Image"/>
+               <label for="post-image" class="form-label">Select an {{#if editMode}}new{{/if}} Image</label>
+            </div>
+            {{#if editMode}}                        
+            <img src="{{post.imagePath}}" class="edit-image">
+            {{/if}}                       
+
+            {{#if editMode}}<input type="hidden" name="PostId" value="{{post.id}}">{{/if}}
+            <div class="btns-group">
+               <button name="btn-save-{{#if editMode}}edit{{else}}create{{/if}}" type="submit" id="btn-save-post" class="btn btn-outline-info ">{{#if editMode}}Editar{{else}}Crear{{/if}}</button>
+               <a href="/" class="btn btn-outline-danger">Descartar</a>
+            </div>                 
+            </form>
+         </div>
+      </div>
+   </div>
+</main>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

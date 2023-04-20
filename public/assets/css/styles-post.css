@@ -1,0 +1,267 @@
+.center-posts {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 20px 10%;
+}
+
+.container-post {
+   height: 100%;
+   padding: 10px;
+   max-width: 900px;
+   position: relative;
+   overflow: hidden;
+   margin: 10px;
+   background-color: #3b3d45;
+   min-height: 200px;
+   min-width: 200px;
+}
+
+.img-post {
+   margin: 15px 0;
+   border-radius: 5px;
+   float: left;
+   width: 100%;
+   
+}
+.side-post {
+   width: 50%;
+   float: left;
+}
+
+.img-user {
+   border-radius: 100%;
+   overflow: hidden;
+   float: left;
+   margin-right: 10px;
+   max-width: 40px;
+   max-height: 40px;
+
+}
+.img-user {
+   height: 40px;
+   overflow: hidden;
+   width: 100px; 
+   height: 100px; 
+   object-fit: cover;
+   object-position: 50%; 
+}
+
+.post-content {
+   width: 50%;
+   float: right;
+}
+.post-title {
+   text-align: start;
+   width: 100%;
+}
+
+.post-description {
+   margin: 0 10px;
+   text-align: justify;
+}
+
+.post-comment {
+   margin: 10px;
+   float: left;
+}
+.post-comment h4 {
+   margin: 10px;
+   margin-bottom: 20px;
+   font-size: 18px;
+   text-align: center;
+   text-decoration: underline;
+   cursor: pointer;
+}
+.comment {
+   background-color: #4c4e58;
+   border-radius: 50px;
+   text-align: left;
+   margin: 5px;
+   margin-bottom: 15px;
+   padding: 20px;
+   width: 410px;
+   align-items: center;
+}
+
+.img-user-comment {
+   border-radius: 100%;
+   overflow: hidden;
+   float: left;
+   margin-right: 10px;
+   max-width: 30px;
+   max-height: 30px;
+}
+.img-user-comment img {
+   height: 30px;
+   width: 30px; 
+   overflow: hidden;
+   object-fit: cover;
+   object-position: 60%; 
+}
+
+.username {
+   margin: 4px;
+   align-items: center;
+}
+
+.container-respuestas {
+   position: relative;
+   left: 10px;
+}
+.respuestas {
+   position: relative;
+   left: 50px;
+   font-size: 15px;
+   margin: 5px 0;
+   max-width: 85%;
+}
+
+.comment-description {
+   margin: 0;
+   position: relative;
+   left: 40px;
+   max-width: 85%;
+}
+/* 
+.img-user-respuesta {
+   float: left;
+   position: absolute;
+   left: 25px;
+} */
+.img-user-respuesta {
+   position: absolute;
+   left: 25px;
+   border-radius: 100%;
+   overflow: hidden;
+   float: left;
+   margin-right: 10px;
+   max-width: 20px;
+   max-height: 20px;
+   height: 30px;
+}
+.img-user-respuesta img {
+   height: 20px;
+   overflow: hidden;
+   object-fit: cover;
+   object-position: 50%; 
+}
+
+.send-comment {
+   position: relative;
+   margin-bottom: 0;
+   padding-bottom: 10%;
+}
+.btn-respuesta {
+   font-size: 15px;
+   margin-left: 25px;
+   /* text-decoration: underline; */
+   border: none;
+   color: #edf0f1;
+}
+.btn-respuesta:hover {
+   font-size: 15px;
+   margin-left: 25px;
+   text-decoration: underline;
+   border: none;
+   color: rgba(0, 136, 160, 1);
+}
+
+.input-comment {
+   width: 70%;
+   height: 25px;
+   margin: 0;
+   size: 10px;
+   background-color: #3b3d45;
+   color: #edf0f1;
+   border-radius: 10px;
+   border-color: #edf0f1;
+}
+
+.btn-discard {
+   border: none;
+   position: relative;
+   top: -10px;
+   right: -3px;
+   float: right;
+   color: #a3a3a3;
+}
+.btn-discard:hover {
+   border: none;
+   position: relative;
+   top: -10px;
+   right: -3px;
+   float: right;
+   color: red;
+}
+
+.btn-save {
+   border: none;
+   position: relative;
+   top: -10px;
+   right: 7px;
+   float: right;
+   color: #a3a3a3;
+}
+.btn-save:hover {
+   border: none;
+   position: relative;
+   top: -10px;
+   right: 7px;
+   float: right;
+   color: rgb(60, 60, 255);
+}
+
+.input-nuevo-comentario {
+   width: 95%;
+   border-radius: 20px;
+   padding: 10px;
+   color: #edf0f1;
+   background-color: #3b3d45;
+   border: 3px solid #797c87;
+}
+
+.btn-nuevo-comentario {
+   font-size: 15px;
+   /* text-decoration: underline; */
+   border: none;
+   color: #edf0f1;
+}
+
+.btn-nuevo-comentario:hover {
+   font-size: 15px;
+   text-decoration: underline;
+   border: none;
+   color: #edf0f1;
+   color: rgb(60, 60, 255);
+}
+
+.date {
+   text-align: start;
+   font-size: 13px;
+   color: #797c87;
+}
+
+.amigo-encontrado {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   
+}
+
+
+.btn-son-amigos {
+   width: 100%;
+   height: 100%;
+   background-color: #a3a3a3;
+   color: black;
+}
+
+.form-add-amigo {
+   padding: 10px 0 5px 0;
+}
+.form-add-amigo button{
+   width: 80%;
+   height: 100%;
+}

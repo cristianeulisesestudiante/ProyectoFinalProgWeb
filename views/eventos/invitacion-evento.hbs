@@ -1,0 +1,44 @@
+<main>
+   <div class="center-elements">
+      <form class="d-flex" role="search" action="/search" method="post">
+         <input
+            class="form-control me-2 search-input"
+            type="search"
+            placeholder="Inserte el nombre del usuario"
+            aria-label="Search"
+            id="search"
+            name="Search"
+            {{#if searchMode}}value="{{nameSearch}}"{{/if}}
+         />
+         <button class="btn btn-outline-light fs-5" type="submit">Search</button>
+         <input type="hidden" name="EventoId" value="{{eventoId}}" />
+      </form>
+   </div>   
+   {{#if Buscando}}
+      {{#if hasAmigos}}
+         <div class="d-flex gap-4">
+            {{#each amigos as |amigo|}}
+            <div class="event">
+               <div class="card bg-main">
+                  <div class="card-body">
+                     <img src="{{this.image_path}}" alt="{{this.description}}" class="img-user-search"/>
+                     <h5 class="card-title">{{this.nombre}} {{this.apellido}}</h5>
+                     <p class="card-text">@{{this.nombre_user}}</p>
+                     <div class="btns">
+                        <form action="/add-amigo-event" method="post" name="form-add-amigo" class="form-inline"
+                        >
+                        <button name="btn-add-amigo-event" type="submit" class="btn-add-amigo-event btn btn-outline-info ms- my-2">Invitar Amigo</button>
+                        <input type="hidden" name="AmigoId" value="{{amigo.id}}" />
+                        <input type="hidden" name="EventoID" value="{{../eventoId}}" />
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>               
+            {{/each}}
+         </div>
+      {{else}}
+         <h1>No se encontro un amigo con ese nombre</h1>
+      {{/if}}
+   {{/if}}
+</main>

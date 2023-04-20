@@ -1,0 +1,120 @@
+<div class="sidebar">
+   <h2>Amigos Agregados</h2>
+   {{#each usuarios as |usuario|}}
+   <ul class="nav">
+        <li class="lista-amigos">
+          <span>  
+            {{usuario.nombre}}
+            {{usuario.apellido}}
+            <p class="username-amigo">@{{usuario.nombre_user}}</p>
+             <form
+            action="/delete-amigo"
+            method="post"
+            name="form-delete-amigo"
+            class="form-delete-amigo"
+        >
+            <input type="hidden" name="AmigoId" value="{{usuario.id}}" />
+            <button
+                name="btn-delete-amigo"
+                type="submit"
+                class="btn btn-danger fs-6 px-3"
+            >Delete</button>
+        </form>        
+          </span>
+         
+        </li>
+   </ul>
+   {{/each}}
+</div>
+
+<div class="main">
+   <main>
+      <section class="text-center text-color-main">
+         <div class="row py-lg-5">
+            <div class="col-lg-7 col-md-8 mx-auto">
+               <h1 class="fw-light">AMIGOS</h1>
+               <p class="lead d-inline">Bienvenido a la zona de amigos.</p>
+               <p class="pt-4">
+               <a href="/add-amigo" class="btn btn-primary btn-general-color">AÑADIR UN AMIGO</a>
+               </p>
+            </div>
+         </div>
+      </section>
+        <section class="text-center center-posts">
+      <div>
+         {{#each posts as |post|}}
+            <div class="">
+               <div class="container-post">
+
+                  <div class="side-post">
+                     <p class="date">Published {{dateTime post.createdAt}}</p>
+                     <div>                        
+                     <img src="{{post.usuario.dataValues.image_path}}" alt="{{post.description}}" class="img-user"  />
+                     <h3 class="post-title">{{post.usuario.dataValues.nombre}} {{post.usuario.dataValues.apellido}}</h3>
+                     </div>
+                     {{#if (hasFoto post.imagePath)}}
+                     <img src="{{post.imagePath}}" alt="{{post.description}}" class="img-post" />
+                     <div class="post-description"><p>{{post.description}}</p></div>                  
+                     {{else}}
+                     <div class="post-description mt-4"><p>{{post.description}}</p></div>                  
+                     {{/if}}                     
+                  </div>
+                  <div class="post-content">
+
+                     <div class="post-comment">
+                        <h4>Comentarios</h4>
+                        {{#each ../comments as |comment|}}
+                        {{#if (userComment post.id comment.postId )}}
+                        <div class="comment">
+                        <div class="img-user-comment">
+                        <img src="{{comment.usuario.dataValues.image_path}}" alt="{{comment.usuario.dataValues.nombre}}"/>
+                        </div>
+                        <p class="username">@{{comment.usuario.dataValues.nombre_user}}</p>
+                        <p class="comment-description">{{comment.description}}</p>
+                        <div>
+                        {{#each ../../respuestas as |respuesta|}}
+                        {{#if (userComment comment.id respuesta.comentarioId )}}
+                        <div class="container-respuestas">
+                        <div class="img-user-respuesta">
+                        <img src="{{respuesta.usuario.dataValues.image_path}}" alt="{{post.description}}"  width="20px" />
+                        </div>
+                        <p class="respuestas"><span>{{respuesta.usuario.dataValues.nombre_user}}: </span> {{respuesta.description}} </p>
+                        </div>
+                        {{/if}}
+                        {{/each}} 
+                           <form action="/reply-post-amigo" method="post" class="send-comment">
+                           <div id="div-comment-{{comment.id}}">
+                           <div class="btn btn-respuesta" name="Botones" id="btn-reply-{{comment.id}}" onclick="reply({{comment.id}},'/')">Reply</div>
+                           </div>
+                           <input type="text" value="{{comment.id}}"  name="ComentarioId" hidden>
+                           <input type="text" value="{{post.id}}"  name="PostId" hidden>
+                           </form>                                    
+                        </div>                   
+                        </div>
+                        {{/if}} 
+                        {{/each}}
+                        <div>
+                           <form action="/new-comment" method="post" class="nuevo-comentario">
+                              <textarea
+                                 class="input-nuevo-comentario"
+                                 name="YourPostComment"
+                                 id=""
+                                 cols="30"
+                                 rows="2"
+                              ></textarea>
+                              <button class="btn btn-nuevo-comentario" type="submit">añadir un
+                                 comentario</button>
+                              <input class="" type="hidden" name="PostId" value="{{post.id}}" />
+                           </form>
+                        </div>
+                        <div class="d-flex justify-content-between mx-3 mt-4">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         {{/each}}
+      </div>
+   </section>
+</main>
+</div>

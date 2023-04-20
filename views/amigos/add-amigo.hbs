@@ -1,0 +1,83 @@
+<main>
+      <div class="center-elements">
+         <form class="d-flex" role="search" action="/search-amigo" method="post">
+            <input
+               class="form-control me-2 search-input"
+               type="search"
+               placeholder="Inserte el nombre del usuario"
+               aria-label="Search"
+               id="search"
+               name="Search"
+               {{#if searchMode}}value="{{nameSearch}}"{{/if}}
+            />
+            <button class="btn btn-outline-light fs-5" type="submit">Search</button>
+         </form>
+      </div>
+   {{#if buscando}}
+   {{#if usuarioEncontrado}}
+
+     <div class="ms-5 mt-5">
+    {{#each usuarios as |usuario|}}
+      <div class="d-flex content-notification ">
+        <div class="div-image">
+        <img
+          src="{{usuario.image_path}}"
+          alt="{{usuario.nombre}}"
+          height="100px"
+          class="img-user-notification"
+        />
+        </div>
+        <div class="d-flex flex-column">
+          <h2 class="text-light title-notification">{{usuario.nombre}} {{usuario.apellido}}</h2>
+          <p class="text-light title-notification">@{{usuario.nombre_user}}</p>
+
+          <div class="d-flex gap-2 ms-3 ">
+            <form action="/add-amigo"
+                  method="post"
+                  name="form-add-amigo"
+                  class="form-add-amigo">
+            {{#if usuario.sonAmigos}}
+               <div name="btn-add-amigo" type="submit" class="btn-son-amigos"><span class=""> SON AMIGOS</span></div>
+            {{else}}
+            {{#if ../solicitudEnviada}}
+               <div name="btn-add-amigo" type="submit" class="btn-son-amigos p-3 text-"><span class=""> SOLICITUD DE AMISTAD ENVIADA</span></div>
+            {{else}}
+            <div>
+            <button
+               class="btn btn-primary w-100"
+                  name="btn-add-amigo"
+                  type="submit"
+            >añadir amigo</button>
+            <input type="hidden" name="UsuarioId" value="{{usuario.id}}" />
+            </div>
+                    </form>                        
+            {{/if}}
+            {{/if}}              
+            </form>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>   
+
+
+   {{else}}         
+         <div class="d-flex align-items-center justify-content-center">
+            <div class="text-center">
+               <h3 class="display-4 fw-bold">No encontrado</h3>
+               <p class="fs-3">
+                  <span class="text-danger">Opps!</span>
+                  Al parecer no existe un usuario con ese nombre.</p>
+            </div>
+         </div>      
+   {{/if}}     
+   {{else}} 
+            <div class="d-flex align-items-center justify-content-center">
+            <div class="text-center">
+               <h3 class="display-5 fw-bold">Introduce el nombre de usuario</h3>
+               <p class="fs-3">
+                  <span class="display-6 text-danger">Que deseas buscar</span></p>
+            </div>
+         </div>        
+   {{/if}}           
+</main>

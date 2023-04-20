@@ -1,0 +1,43 @@
+<main>
+
+  <div class="card">
+    <div class="card-header">
+      Crear Evento
+    </div>
+    <div class="card-body">
+
+      <form method="POST" action="/add-eventos">
+        <div class="mb-3">
+          <label for="Name" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="name" name="Name" value="" />
+
+        </div>
+                <div class="mb-3">
+          <label for="FechaFinalizacion" class="form-label">Fecha de FechaFinalizacion:</label>
+          <input type="date" class="form-control" id="FechaFinalizacion" name="FechaFinalizacion" step="0.01" value="" />
+
+        </div>
+         
+                <div class="mb-3">
+          <label for="FechaCreacion" class="form-label">Fecha de Creacion:</label>
+          <input type="date" class="form-control" id="FechaCreacion" name="FechaCreacion" step="0.01" value="" />
+
+        </div>
+        <div class="mb-3">
+          <label for="Lugar" class="form-label">Lugar</label>
+          <input type="text" name="Lugar" id="lugar" step="0.01" value="" class="form-control">
+        </div>
+
+        
+        <div class="mb-3">
+          <label for="Cantidad" class="form-label">Cantidad</label>
+          <input type="number" name="Cantidad" id="lugar"  value="" class="form-control" min="1" max="100">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Craer evento </button>
+      </form>
+
+    </div>
+  </div>
+
+</main>

@@ -1,0 +1,90 @@
+<main>
+   <div class="container">
+      <ul class="nav nav-tabs">
+         <li class="nav-item">
+            <a class="nav-link active-nav-event" href="/invitaciones-eventos">Invitaciones de
+               eventos</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="/eventos-list">Mis eventos</a>
+         </li>
+         <a href="/add-eventos">
+         </a>
+      </ul>
+      <section class="text-center text-color-main">
+         <div class="row py-lg-5">
+            <div class="col-lg-7 col-md-8 mx-auto">
+               <h1 class="fw-light">Invitaciones</h1>
+            </div>
+         </div>
+      </section>
+   </div>
+
+   <div>
+
+      <div class="d-flex gap-4">
+         {{#each invitaciones}}
+            {{!-- <div class="event">
+               <div class="card bg-main">
+                  <div class="card-body">
+                     <h5 class="card-title">{{this.evento.dataValues.name}}</h5>
+                     <p class="card-text">@{{this.usuario.dataValues.nombre_user}}</p>
+                     <div class="btns">
+                        <form action="/add-amigo-event" method="post" name="form-add-amigo" class="form-inline"
+                        >
+                        <button name="btn-add-amigo-event" type="submit" class="btn-add-amigo-event btn btn-outline-info ms- my-2">Invitar Amigo</button>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>               
+         <h1>{{evento.name}}</h1>
+         <p>{{evento.aceptado}}</p> --}}
+            <div class="d-flex content-invitaciones">
+               {{!-- <div class="div-image">
+        <img
+          src="{{notificacion.usuario.image_path}}"
+          alt="{{notificacion.usuario.nombre}}"
+          height="100px"
+          class="img-user-notification"
+        />
+        </div> --}}
+               <div>
+                  <h3>INVITACION A EVENTO</h3>
+                  <h5 class="card-title"><strong> NOMBRE DEL EVENTO</strong></h5>
+                  <p class="card-text">{{this.evento.dataValues.name}}</p>
+                  <h5 class="card-title"><strong> INICIA </strong></h5>
+                  <p class="card-text">{{dateTime this.evento.dataValues.fechaCreacion}}</p>
+                  <h5 class="card-title"><strong>TERMINA</strong></h5>
+                  <p class="card-text">{{dateTime this.evento.dataValues.fechaFinalizacion}}</p>
+                  <h5 class="card-title"><strong>LUGAR</strong></h5>
+                  <p class="card-text">{{this.evento.dataValues.lugar}}</p>
+                  <h5 class="card-title"><strong>INVITA</strong></h5>
+                  <p class="card-text">@{{this.usuario.dataValues.nombre_user}}</p>
+               </div>
+
+               <div class="d-flex flex-column">
+                  <h2
+                     class="text-light title-notification"
+                  >{{notificacion.usuario.nombre_user}}</h2>
+
+                  <div class="d-flex gap-2 m-3">
+                     <form action="/aceptar-solicitud" method="post">
+                        <input type="hidden" name="UsuarioId" value={{notificacion.usuario.id}} />
+                        <input type="hidden" name="NotificacionId" value={{notificacion.id}} />
+                        <button class="btn btn-success" type="submit">Aceptar</button>
+                     </form>
+
+                     <form action="/rechazar-solicitud" method="post">
+                        <input type="hidden" name="UsuarioId" value={{notificacion.usuario.id}} />
+                        <input type="hidden" name="NotificacionId" value={{notificacion.id}} />
+                        <button class="btn btn-danger" type="submit">Rechazar</button>
+
+                     </form>
+                  </div>
+               </div>
+            </div>
+         {{/each}}
+      </div>
+   </div>
+</main>
